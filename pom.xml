@@ -18,6 +18,15 @@
     <modules>
         <module>nacos-consumer</module>
         <module>nacos-provider</module>
+
+        <module>nacos-rabbitmq-consumer</module>
+        <module>nacos-rabbitmq-provider</module>
+
+        <module>nacos-rocketmq-consumer</module>
+        <module>nacos-rocketmq-provider</module>
+
+        <module>nacos-kafka-consumer</module>
+        <module>nacos-kafka-provider</module>
     </modules>
 
     <properties>
@@ -28,7 +37,8 @@
         <mysql.version>8.0.29</mysql.version>
         <mybatis.version>2.2.2</mybatis.version>
         <githubpagehelper.version>1.4.2</githubpagehelper.version>
-        <fastjson2.version>2.0.2.graal</fastjson2.version>
+        <fastjson2.version>2.0.3.graal</fastjson2.version>
+        <rocketmq.version>2.2.2</rocketmq.version>
     </properties>
 
     <dependencyManagement>
