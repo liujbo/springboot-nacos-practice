@@ -1,0 +1,19 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: nacos-rabbitmq-provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Soldier@53
+    url: jdbc:mysql://localhost:3306/demo
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.nacosrabbitmqprovider.model
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
