@@ -34,11 +34,8 @@
         <spring-cloud.version>2021.0.2</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <lombok.version>1.18.24</lombok.version>
-        <mysql.version>8.0.29</mysql.version>
-        <mybatis.version>2.2.2</mybatis.version>
         <githubpagehelper.version>1.4.2</githubpagehelper.version>
-        <fastjson2.version>2.0.3.graal</fastjson2.version>
-        <rocketmq.version>2.2.2</rocketmq.version>
+        <fastjson2.version>2.0.6.graal</fastjson2.version>
     </properties>
 
     <dependencyManagement>
@@ -63,17 +60,12 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <version>8.0.29</version>
             </dependency>
-            <!--mybatis-->
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -104,10 +96,16 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${githubpagehelper.version}</version>
         </dependency>
+        <!--fastjson2-->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
             <version>${fastjson2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
         </dependency>
     </dependencies>
 
