@@ -68,9 +68,9 @@ spring:
 </dependency>
 <!--负载均衡-->
 <dependency>
-<groupId>org.springframework.cloud</groupId>
-<artifactId>spring-cloud-starter-loadbalancer</artifactId>
-<version>3.1.2</version>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+    <version>3.1.2</version>
 </dependency>
 ```
 
