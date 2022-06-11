@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/consumer")
 public class ConsumerController {
@@ -24,7 +22,7 @@ public class ConsumerController {
     private ConsumerService consumerService;
 
     @PostMapping("/query")
-    public List<ConsumerInfoPO> query(@RequestBody Object object) {
+    public Object query(@RequestBody Object object) {
         LOGGER.info("客户管理——查询接口，传入参数object：{}", JSON.toJSONString(object));
         JSONObject jsonObject = JSON.parseObject(JSON.toJSONString(object));
         String consumerName = jsonObject.getString("consumerName");

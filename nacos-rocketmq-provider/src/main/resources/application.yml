@@ -8,8 +8,10 @@ spring:
     username: root
     password: Soldier@53
     url: jdbc:mysql://localhost:3306/demo
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+mybatis-plus:
   type-aliases-package: com.example.nacosrocketmqprovider.model
 
 pagehelper:

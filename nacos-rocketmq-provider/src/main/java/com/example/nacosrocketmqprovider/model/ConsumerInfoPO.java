@@ -1,15 +1,19 @@
 package com.example.nacosrocketmqprovider.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
+@TableName("tb_consumer")
 public class ConsumerInfoPO {
     /**
      * 主键
      */
+    @TableId
     private Long id;
     /**
      * 客户姓名
