@@ -1,11 +1,13 @@
 package com.example.nacosprovider.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.nacosprovider.mapper.ConsumerMapper;
 import com.example.nacosprovider.model.ConsumerInfoPO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +16,8 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 
 @Service
+@Slf4j
 public class ConsumerService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerService.class);
 
     @Autowired
     private ConsumerMapper consumerMapper;
@@ -29,7 +30,7 @@ public class ConsumerService {
      */
     @Transactional(rollbackFor = Exception.class)
     public String add(ConsumerInfoPO consumerInfoPO) {
-        consumerMapper.add(consumerInfoPO);
+        consumerMapper.insert(consumerInfoPO);
         return "新增成功";
     }
 
@@ -44,9 +45,15 @@ public class ConsumerService {
      * @return 客户信息集合
      */
     public List<ConsumerInfoPO> query(String consumerName, String consumerGender, String consumerFavorite, int pageNum, int pageSize) {
+        LambdaQueryWrapper<ConsumerInfoPO> wrapper = new QueryWrapper<ConsumerInfoPO>().lambda();
+        wrapper.like(StringUtils.isNotEmpty(consumerName), ConsumerInfoPO::getConsumerName, consumerName)
+                .eq(StringUtils.isNotEmpty(consumerGender), ConsumerInfoPO::getConsumerGender, consumerGender)
+                .like(StringUtils.isNotEmpty(consumerFavorite), ConsumerInfoPO::getConsumerFavorite, consumerFavorite);
+
         PageHelper.startPage(pageNum, pageSize);
-        List<ConsumerInfoPO> consumerInfoPOList = consumerMapper.query(consumerName, consumerGender, consumerFavorite);
+        List<ConsumerInfoPO> consumerInfoPOList = consumerMapper.selectList(wrapper);
         PageInfo<ConsumerInfoPO> pageInfo = new PageInfo<>(consumerInfoPOList);
+
         if (CollectionUtils.isEmpty(pageInfo.getList())) {
             return null;
         }
@@ -61,7 +68,7 @@ public class ConsumerService {
      */
     @Transactional(rollbackFor = Exception.class)
     public String update(ConsumerInfoPO consumerInfoPO) {
-        consumerMapper.update(consumerInfoPO);
+        consumerMapper.updateById(consumerInfoPO);
         return "编辑成功";
     }
 
@@ -73,7 +80,7 @@ public class ConsumerService {
      */
     @Transactional(rollbackFor = Exception.class)
     public String delete(String id) {
-        consumerMapper.delete(id);
+        consumerMapper.deleteById(id);
         return "删除成功";
     }
 }
