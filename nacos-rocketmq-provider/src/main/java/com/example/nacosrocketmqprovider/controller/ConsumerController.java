@@ -4,8 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.example.nacosrocketmqprovider.model.ConsumerInfoPO;
 import com.example.nacosrocketmqprovider.service.ConsumerService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,16 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/consumer")
+@Slf4j
 public class ConsumerController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConsumerController.class);
 
     @Autowired
     private ConsumerService consumerService;
 
     @PostMapping("/query")
     public Object query(@RequestBody Object object) {
-        LOGGER.info("客户管理——查询接口，传入参数object：{}", JSON.toJSONString(object));
+        log.info("客户管理——查询接口，传入参数object：{}", JSON.toJSONString(object));
         JSONObject jsonObject = JSON.parseObject(JSON.toJSONString(object));
         String consumerName = jsonObject.getString("consumerName");
         String consumerGender = jsonObject.getString("consumerGender");
@@ -35,14 +33,14 @@ public class ConsumerController {
 
     @PostMapping("/add")
     public String add(@RequestBody Object object) {
-        LOGGER.info("客户管理——新增接口，传入参数object：{}", JSON.toJSONString(object));
+        log.info("客户管理——新增接口，传入参数object：{}", JSON.toJSONString(object));
         ConsumerInfoPO consumerInfoPO = JSONObject.parseObject(JSON.toJSONString(object), ConsumerInfoPO.class);
         return consumerService.add(consumerInfoPO);
     }
 
     @PostMapping("/update")
     public String update(@RequestBody Object object) {
-        LOGGER.info("客户管理——编辑接口，传入参数object：{}", JSON.toJSONString(object));
+        log.info("客户管理——编辑接口，传入参数object：{}", JSON.toJSONString(object));
         ConsumerInfoPO consumerInfoPO = JSONObject.parseObject(JSON.toJSONString(object), ConsumerInfoPO.class);
         return consumerService.update(consumerInfoPO);
     }
