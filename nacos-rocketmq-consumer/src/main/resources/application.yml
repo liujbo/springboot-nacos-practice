@@ -1,1 +1,10 @@
-
+server:
+  port: 9310
+spring:
+  application:
+    name: nacos-rocketmq-consumer
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+mybatis-plus:
+  type-aliases-package: com.example.nacosrocketmqconsumer.model

@@ -2,36 +2,7 @@
 
 ## 一、服务集成
 
-> 服务注册与发现：nacos； 服务远程调用：openfeign；负载均衡：loadbalancer
-
-### 1.nacos服务器
-
-**下载软件包**
-
-[nacos稳定版本](https://github.com/alibaba/nacos/releases/)
-
-**启动和停止服务器**
-
-**1）Linux/Unix/Mac**
-
-```shell
-sh startup.sh -m standalone # 服务启动命令（standalone代表着单机模式运行，非集群模式）
-sh shutdown.sh # 服务停止命令
-```
-
-**2）Windows**
-
-```shell
-startup.cmd -m standalone # 服务启动命令（standalone代表着单机模式运行，非集群模式）
-shutdown.cmd # 服务停止命令
-```
-
-**nacos控制台**
-> [localhost:8848/nacos/index.html](localhost:8848/nacos/index.html)  (localhost 可以换成本机ip)
->
->默认用户名和密码 nacos:nacos
-
-### 2.项目集成nacos服务注册与发现
+### 1.项目集成nacos服务注册与发现
 
 **所需依赖**
 
@@ -56,7 +27,7 @@ spring:
       server-addr: localhost:8848 # nacos服务器地址
 ```
 
-### 3.集成服务远程调用feign
+### 2.集成服务远程调用feign
 
 **所需依赖**
 
