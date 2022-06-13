@@ -36,6 +36,9 @@
         <lombok.version>1.18.24</lombok.version>
         <githubpagehelper.version>1.4.2</githubpagehelper.version>
         <fastjson2.version>2.0.6.graal</fastjson2.version>
+        <rocketmq.version>2.2.2</rocketmq.version>
+        <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <mysql.version>8.0.29</mysql.version>
     </properties>
 
     <dependencyManagement>
@@ -60,12 +63,18 @@
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.29</version>
+                <version>${mysql.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.5.2</version>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!--消息队列：rocketmq-->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
